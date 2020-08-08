@@ -13,6 +13,7 @@ user@linux:~/Pfad/zu/den/entpackten/Dateien/SendTo-Drucker> bash ./install
 
 Enthaltene Dateien:
 * install 
+
 ** Bash-Script -Installiert Scripte und Menüs für den angemeldeten Nutzer
 
 * nemowrapper_printfile - wird aufgerufen von sendto_printer_office.nemo_action und 
