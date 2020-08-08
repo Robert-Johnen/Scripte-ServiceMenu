@@ -12,7 +12,8 @@ Der Aufruf erfolgt im Terminal mit
 user@linux:~/Pfad/zu/den/entpackten/Dateien/SendTo-Drucker> bash ./install
 
 Enthaltene Dateien:
-* install - Installiert Scripte und Menüs für den angemeldeten Nutzer
+* install 
+** Bash-Script -Installiert Scripte und Menüs für den angemeldeten Nutzer
 
 * nemowrapper_printfile - wird aufgerufen von sendto_printer_office.nemo_action und 
                           sendto_printer_pdftxt.nemo_action
