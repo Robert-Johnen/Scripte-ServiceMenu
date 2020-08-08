@@ -11,16 +11,18 @@ Der Aufruf erfolgt im Terminal mit
 
 user@linux:~/Pfad/zu/den/entpackten/Dateien/SendTo-Drucker> bash ./install
 
-Enthaltene Dateien:
-* install 
+## Enthaltene Dateien:
 
-** Bash-Script -Installiert Scripte und Menüs für den angemeldeten Nutzer
+* install (Bash-Script) - Installiert Scripte und Menüs für den angemeldeten Nutzer
 
-* nemowrapper_printfile - wird aufgerufen von sendto_printer_office.nemo_action und 
-                          sendto_printer_pdftxt.nemo_action
+* nemowrapper_printfile (Bash-Script) - Wird aufgerufen von sendto_printer_office.nemo_action und sendto_printer_pdftxt.nemo_action. Dieses Script enthält die eigentliche Druckfunktion.
 
--rw-r--r-- 1 robert users 1064  9. Aug 01:29 README.md
--rw-r--r-- 1 robert users 1053  7. Aug 15:29 sendto_printer_office.nemo_action
--rw-r--r-- 1 robert users  312  7. Aug 15:29 sendto_printer_pdftxt.nemo_action
--rw-r--r-- 1 robert users 1337 16. Feb 2018  Submenu-Sendto-Officefile2print.desktop
--rw-r--r-- 1 robert users  449  2. Mär 2018  Submenu-Sendto-PDFTXTPS2print.desktop
+* Submenu-Sendto-Officefile2print.desktop - Menüerweiterung Office-Dateien an Standarddrucker senden für Dateimanager Dolphin
+
+* Submenu-Sendto-PDFTXTPS2print.desktop - Menüerweiterung Text-, PDF-, INI- und Script-Dateien an Standarddrucker senden für Dolphin
+
+* sendto_printer_office.nemo_action - Menüerweiterung Office-Dateien an Standarddrucker senden für Dateimanager Nemo
+
+* sendto_printer_pdftxt.nemo_action - Menüerweiterung Text-, PDF-, INI- und Script-Dateien an Standarddrucker senden für Nemo
+
+* README.md - Diese Datei hier
