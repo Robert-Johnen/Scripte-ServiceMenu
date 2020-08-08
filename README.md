@@ -9,7 +9,7 @@ Scripte und Aktionen für Kontextmenüs von Dateimanagern (Dolphin, Nemo)
 
 - Submenu-PDF - verschiedene Menüaktionen mit PDF-Dateien
 
-Alle Scripte werden Verzeichis ~/bin des aktuellen Users installiert und die
+Alle Scripte werden im Verzeichis ~/bin des aktuellen Users installiert und die
 Menüs werden jeweils für den aktuellen Nutzer bereitgestellt.
 Das Verzeichnis ~/bin sollte im Suchpfad sein. Es werden keine Root-Rechte
 zur Installation benötigt. In jedem Verzeichnis liegt eine Datei _install_.
