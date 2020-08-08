@@ -1,0 +1,36 @@
+#! /bin/bash
+#--------------------------------------------------------------------------------------#
+#
+### Mailversand mehrerer Anhaenge mit Thunderbird
+### gedacht fuer das Kontextmenue Dateimanager
+### (c) Robert Johnen
+#
+#--------------------------------------------------------------------------------------#
+# set -x					# zum Debuggen 
+
+#--------------------------------------------------------------------------------------#
+#------------------------------------ Hauptprogramm -----------------------------------#
+#--------------------------------------------------------------------------------------#
+
+ARG="${1}"					            # erstes Argument holen
+while [ -n "${ARG}" ]		            # wenn nicht leer, dann
+    do						            # wiederhole
+    if [ -f "${ARG}" ]				    # Wenn Parameter eine Datei dann
+      then					            # (Verzeichnis kann kein Anhang werden)
+      LISTE="${LISTE},file://${ARG}"	# Compose-Header fuer Thunderbird zusammenbasteln
+#      echo "${LISTE}"
+      ((ANZAHL+=1))				        # Anzahl der Anhaenge +1
+      else                              # sonst keine Datei, dann Fehlermeldung
+      echo "${ARG} ist keine regulaere Datei."	
+      fi
+    shift 					            # loescht $1 und rueckt $2 auf $1 vor
+    ARG="${1}"					        # naechstes Argument holen
+    done					            # bis Parameterliste leer
+
+if [ $ANZAHL -gt 0 ]                    # wenn anzahl der Anhaenge > 0
+  then                                  # bastele die Befehlszeilefuer thnderbird
+  exec thunderbird -compose "format='2',subject='${ANZAHL} Datei(en) angehaengt'${LISTE:+,attachment='${LISTE#,}'}" 
+  else                                  # wenn Anzahl = 0 dann sag wies geht...
+  echo Usage: `basename $0` file1 file2 file3 ...
+  fi
+  

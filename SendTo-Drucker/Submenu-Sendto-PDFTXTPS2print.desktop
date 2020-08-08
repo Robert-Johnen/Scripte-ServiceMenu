@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Service
+Encoding=UTF-8
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+MimeType=application/pdf;application/postscript;text/plain;application/x-wine-extension-ini;application/x-shellscript;
+Actions=Action1
+X-KDE-Priority=TopLevel
+X-KDE-Submenu=Send to...
+X-KDE-Submenu[de]=Senden an...
+
+[Desktop Action Action1]
+Name=standard printer (PDF/PostScript/Textfile)
+Name[de]=Standarddrucker (PDF/PostScript/Textdatei)
+Exec=lp %F
+Icon=printer

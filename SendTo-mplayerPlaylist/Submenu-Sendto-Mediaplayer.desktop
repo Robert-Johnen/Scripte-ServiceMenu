@@ -1,0 +1,20 @@
+[Desktop Entry]
+Type=Service
+Encoding=UTF-8
+MimeType=audio/*;video/*;
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+Actions=MPlayer;MPlayerPlaylist
+X-KDE-Priority=TopLevel
+X-KDE-Submenu=Send to...
+X-KDE-Submenu[de]=Senden an...
+
+[Desktop Action MPlayer]
+Name=MPlayer now
+Name[de]=MPlayer jetzt
+Exec=gmplayer %U
+Icon=mplayer
+
+[Desktop Action MPlayerPlaylist]
+Name=MPlayer Playlist
+Exec=ksm_sendto_add2mplayerplaylist %f
+Icon=mplayer

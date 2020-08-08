@@ -1,0 +1,11 @@
+[Nemo Action]
+Name=Senden an... Bluetoothgeraet
+Comment=versenden per Bluetooth
+Dependencies=bluedevil-sendfile;
+Exec=bluedevil-sendfile -f %F
+Icon-Name=network-bluetooth
+Selection=any
+#Separator=;
+Quote=double
+#Mimetypes=all/allfiles;
+Extensions=nodirs;

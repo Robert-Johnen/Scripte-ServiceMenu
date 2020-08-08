@@ -1,0 +1,11 @@
+[Nemo Action]
+Name=Senden an... Standarddrucker
+Comment=drucken
+Dependencies=lpr;
+Exec=nemowrapper_printfile t %F
+Icon-Name=printer
+Selection=any
+#Separator=;
+Quote=double
+Mimetypes=application/pdf;application/postscript;text/plain;application/x-wine-extension-ini;application/x-shellscript;
+#Extensions=nodirs;

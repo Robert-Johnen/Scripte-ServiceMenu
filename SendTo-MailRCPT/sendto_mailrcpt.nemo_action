@@ -1,0 +1,11 @@
+[Nemo Action]
+Name=Senden an... Mailempfaenger (Thunderbird)
+Comment=Mailanhang generieren
+Dependencies=thunderbird;
+Exec=ksm_sendto_mailrcpt %F
+Icon-Name=mail-attachment
+Selection=any
+#Separator=;
+Quote=double
+#Mimetypes=all/allfiles;
+Extensions=nodirs;

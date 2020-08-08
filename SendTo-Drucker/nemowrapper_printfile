@@ -1,0 +1,38 @@
+#! /bin/bash
+#--------------------------------------------------------------------------------------#
+#
+### Wrapper-Script fuer sendto_printer*.nemo_action
+### gedacht fuer das Kontextmenue Nemo
+### (c) Robert Johnen
+#
+#--------------------------------------------------------------------------------------#
+# set -x					# zum Debuggen 
+
+#--------------------------------------------------------------------------------------#
+#------------------------------------ Hauptprogramm -----------------------------------#
+#--------------------------------------------------------------------------------------#
+PARA="${1}"                                                 # Parameter fuer ksm_pdf_tool
+shift
+while [ -n "${1}" ]                                         # wenn nicht leer, dann wiederhole
+    do                                                      
+    case $PARA in
+      t) lp "${1}"
+      ((ANZAHL+=1))                                         # Anzahl der verarbeiteten PDF-Dateien
+      ;;
+      o) libreoffice --headless -p "${1}"
+      ((ANZAHL+=1))                                         # Anzahl der verarbeiteten PDF-Dateien
+      ;;
+      *) echo "Fehler bei Objekt ${1}"
+      ;;
+      esac
+      ((ANZAHL+=1))                                         # Anzahl der verarbeiteten PDF-Dateien
+    shift                                                   # loescht $1 und rueckt $2 auf $1 vor
+    done                                                    # bis Parameterliste leer
+
+if [ $ANZAHL -gt 0 ]                                        # wenn anzahl der Anhaenge > 0
+  then                                                      # bastele die Befehlszeilefuer thnderbird
+  echo "${ANZAHL} Objekte verarbeitet"
+  else                                                      # wenn Anzahl = 0 dann sag wies geht...
+  echo Usage: `basename $0` [ot] file1 file2 file3 ...
+  fi
+  

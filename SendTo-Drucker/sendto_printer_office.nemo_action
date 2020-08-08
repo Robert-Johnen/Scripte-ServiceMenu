@@ -1,0 +1,11 @@
+[Nemo Action]
+Name=Senden an... Standarddrucker
+Comment=drucken
+Dependencies=libreoffice;
+Exec=nemowrapper_printfile o %F
+Icon-Name=printer
+Selection=any
+#Separator=;
+Quote=double
+Mimetypes=application/msword;application/vnd.ms-powerpoint;application/vnd.ms-excel;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.openxmlformats-officedocument.presentationml.slide;application/vnd.openxmlformats-officedocument.presentationml.slideshow;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.ms-word.document.macroenabled.12;application/vnd.ms-powerpoint.presentation.macroenabled.12;application/vnd.ms-excel.sheet.macroenabled.12;application/vnd.oasis.opendocument.presentation;application/vnd.oasis.opendocument.spreadsheet;application/vnd.oasis.opendocument.text;application/vnd.oasis.opendocument.graphics;application/vnd.oasis.opendocument.chart;application/vnd.oasis.opendocument.formula;
+#Extensions=nodirs;

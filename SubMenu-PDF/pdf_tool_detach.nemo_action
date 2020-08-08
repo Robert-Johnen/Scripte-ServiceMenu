@@ -1,0 +1,11 @@
+[Nemo Action]
+Name=PDF-Datei - Dateianhaenge extrahieren
+Comment=PDF-Datei
+Dependencies=pdfinfo;oyranos-icc;podofopdfinfo;pdffonts;pdfimages;pdfdetach;pdfseparate;pdftops;pdftocairo;pdftohtml;pdftotext;pdftoppm;pdftk;pdfjam;cfftot1;mutool;tesseract;qpdf;convert;
+Exec=nemowrapper_pdftool "DETACH" %F
+Icon-Name=application-pdf
+Selection=any
+#Separator=;
+Mimetypes=application/pdf;
+#Extensions=pdf;
+Quote=double

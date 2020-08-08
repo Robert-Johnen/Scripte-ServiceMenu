@@ -1,0 +1,141 @@
+#!/bin/bash
+
+###------------------------------------------------------------------------------------#
+#
+### Aufruf:
+### ======= 
+### ~$> ksm_sendto_add2mplayerplaylist /vollstaendiger/Pfad/zur/Mediendatei
+###
+### Funktion:
+### ---------
+### Erstellt einen Link zur im Parameter angegebenen 
+### Datei in einem festgelegten Verzeichnis und nutzt dieses
+### Verzeichnis als Playlist fuer mplayer
+###
+### Kommandozeilenparameter:
+### ------------------------
+### eine Mediendatei mit vollstaendiger Pfadangebe
+### der Parameter ist *nicht* optional
+###
+### (c) Robert Johnen
+#
+###------------------------------------------------------------------------------------#
+#---------------------------------- Scriptoptionen ------------------------------------#
+###------------------------------------------------------------------------------------#
+#
+#set -x					# Echo fuer jeden Befehl zum Debuggen
+#set -n					# Befehle nur lesen, nicht ausfueheren (dry run)
+#set +i					# erzwinge interaktive Shell
+#set -e					# sofortiger Stop wenn $?<>0
+#set -m					# Job-Kontrolle erzwingen
+#set -u					# undeklarierte Variablen als Fehler behandeln
+
+###------------------------------------------------------------------------------------#
+#----------------------- Deklaration von globalen Konstanten --------------------------#
+###------------------------------------------------------------------------------------#
+#
+declare -r E_OK=0				    # ohne Fehler --> alles ok
+declare -r E_GENERAL=1				# Division durch 0 oder unerlaubte Funktion
+declare -r E_EMPTY=2				# fehlendes Schluesselwort, Kommando oder fehlende Berechtigung
+declare -r E_EXEC=126				# fehlende Berechtigung oder nicht ausfuehrbar
+declare -r E_CNOTFOUND=127			# Befehl nicht gefunden oder nicht im Pfad
+declare -r E_OOR=128				# Exit-Code nicht zwischen 0 und 255
+declare -r E_CTRLC=130				# Script wurde abgebrochen mit Strg-C
+
+###------------------------------------------------------------------------------------#
+#----------------------- Deklaration von globalen Variablen ---------------------------#
+###------------------------------------------------------------------------------------#
+#
+declare -a ARGS=($@)			     # Alle Kommandozeilenparameter in ein Array einlesen
+declare ARGSCOUNT=$#			     # Anzahl der Kommandozeilenparameter
+declare IFSTMP="${IFS}"				 # urspruengliche Trennzeichen zwischenspeichern
+declare IFS=$'\t\n'				     # Trennzeichen auf TAB und NEWLINE alleine
+declare SCRIPTNAME="${0##*/}"	     # Scriptname feststellen
+declare KURZNAME="${SCRIPTNAME%%.*}" # Scriptname ohne Erweiterung
+declare ERRCODE=0				     # Fehlercode fur Fehler im Script Nullwert
+declare ZAEHLER					     # einfache Zaehlervariable fuer Schleifen
+declare DATUM=`date +%Y%m%d`		 # aktuelles Datum Format JJJJMMTT
+declare ZEIT=`date +%H%M%S%N`			 # aktuelle Zeit Format HHMMSS
+
+# Definiert das Verzeichnis, welches als Playlist genutzt wird
+declare VERZEICHNISPLAYLIST=~/.mplayer/playlist	 
+declare INHALTPLAYLIST=$(ls -tr "${VERZEICHNISPLAYLIST}")    
+
+#
+###------------------------------------------------------------------------------------#
+#--------------------------- bedingte Variablendeklarationen --------------------------#
+###------------------------------------------------------------------------------------#
+#
+#---- Wenn Debug-Modus (set -x) dann bitte am Prompt mit ein paar Diagnostik-Daten ----#
+[[ "$-" == *x* ]] && P4='$(read time junk < /proc/$$/schedstat; echo "@@@ $time @@@ " )'
+
+# ich will genau einen Kommandozeilenparameter
+[ $ARGSCOUNT -eq 1 ] || {    
+    # sonst auch verloren ;-), aber ich sage dir, was ich will, bevor ich Schluss mache
+    cat << EOF
+    Der Scriptaufruf muss mit genau einem Parameter erfolgen:
+    
+    Aufruf: ~$> ${SCRIPTNAME} /vollstaendiger/Pfad/zur/Mediendatei
+    
+    Die Datei muss mit dem vollständigen Pfad angegeben werden;
+EOF
+    exit $E_GENERAL;    
+    }
+# Hole genau diesen ersten Parameter
+declare MEDIENDATEI="${1}"
+# Aus dem Parameter wird der Name des Links generiert 
+# (Leerzeichen durch _ ersetzt, weil mplayer darauf allergisch reagiert)
+declare LINKNAME="${DATUM}${ZEIT}-"$(echo `basename "${MEDIENDATEI}"` | sed s/\ /_/g) 
+    
+#
+###------------------------------------------------------------------------------------#
+#-------------------------- Includefiles und Abhaengigkeiten --------------------------#
+###------------------------------------------------------------------------------------#
+#
+# mplayer existiert im Suchpfad?
+which mplayer || {
+    # nein?, leider verloren
+    echo "bitte mplayer installieren...";
+    exit $E_CNOTFOUND;
+    }
+
+#
+#--------------------------------------------------------------------------------------#
+#------------------------------------ Hauptprogramm -----------------------------------#
+#--------------------------------------------------------------------------------------#
+    
+# teste ob der Parameter eine existierende Datei ist
+if [ -e "${MEDIENDATEI}" ]	
+    then
+    # ist er, na dann ist ja gut
+    # Wenn das Verzeichnis ${VERZEICHNISPLAYLIST} nicht existiert, wird es angelegt
+    [ -d "${VERZEICHNISPLAYLIST}" ] || mkdir "${VERZEICHNISPLAYLIST}" 
+    # Im Playlistverzeichnis dem Link zur MEDIENDATEI anlegen
+    ln -s "${MEDIENDATEI}" "${VERZEICHNISPLAYLIST}/${LINKNAME}" 	    
+    # Nachricht an Nutzer
+    # notify-send -i mplayer -t 3000 "${LINKNAME} eingefuegt"    
+    # speichere Inhalt vom Verzeichnis
+    INHALTPLAYLIST=$(ls -tr "${VERZEICHNISPLAYLIST}")    
+
+    # wenn Verzeichnis nicht leer und mplayer nicht woanders laeuft
+    while [ ! "${INHALTPLAYLIST}" = "" ] && [ ! `pidof mplayer` ]    
+        do
+        # hole den aeltesten Dateilink
+        AKTUELLEDATEI=$(ls -tr "${VERZEICHNISPLAYLIST}" | head -1)     
+        # Benachrichtigung an angemeldete Nutzer
+        # notify-send -i mplayer -t 5000 "${AKTUELLEDATEI}"     
+        # spiele die Datei (nur Audio) ab
+        mplayer -vo null "${VERZEICHNISPLAYLIST}/${AKTUELLEDATEI}"     
+        # und loesche den Link danach
+        rm "${VERZEICHNISPLAYLIST}/${AKTUELLEDATEI}"    
+        # speichere den neuen Inhalt vom Verzeichnis
+        INHALTPLAYLIST=$(ls -tr "${VERZEICHNISPLAYLIST}")     
+        done
+    [ "${INHALTPLAYLIST}" = "" ] && echo "Playlist leer :-)" || echo "mplayer läuft bereits. Laufende Instanz wird nicht unterbrochen."
+else
+    # schon wieder verloren :-(
+    echo "Die Datei existiert nicht, oder der"
+    echo "vollständige Pfad wurde nicht angegeben"
+    exit $E_GENERAL    
+fi
+exit $E_OK
