@@ -10,7 +10,7 @@ Scripte und Menüeinträge für das Kontextmenü der Dateimanager Dolphin und Ne
 - myPDF-Tool - Analysieren und Modifizieren von PDF-Dateien (Nemo und Dolphin) </br> [https://github.com/Robert-Johnen/myPDF-Tool]
 
 In jedem Unterverzeichnis liegt eine Datei _install_. Durch den Aufruf von
-```
+``` 
 user@host:~/entpackte/Dateien> bash ./install
 ```
 im jeweiligen Unterverzeichnis werden die entsprechenden Menüeinträge generiert und die Scripte in das </br>
