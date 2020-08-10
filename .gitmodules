@@ -1,0 +1,3 @@
+[submodule "myPDF-Tool"]
+	path = myPDF-Tool
+	url = git@github.com:/Robert-Johnen/myPDF-Tool
