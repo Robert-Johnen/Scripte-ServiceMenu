@@ -13,9 +13,12 @@ user@linux:~/Pfad/zu/den/entpackten/Dateien/SendTo-mplayerPlaylist> bash ./insta
 
 * install (Bash-Script) - Installiert Scripte und Menüs für den angemeldeten Nutzer
 
-* ksm_sendto_add2mplayerplaylist (Bash-Script) - Legt einen Link für jede als Parameter übergebene Mediendatei ins Verzeichnis ~/.mplayer/playlist, startet mplayer mit diesem Verzeichnisinhalt als Playlist und löscht den Link nachdem die Datei abgespielt wurde.
+* ksm_sendto_add2mplayerplaylist (Bash-Script) - Legt einen Link für jede als Parameter übergebene Mediendatei 
+ins Verzeichnis ~/.mplayer/playlist, startet mplayer mit diesem Verzeichnisinhalt als Playlist und löscht den 
+Link nachdem die Datei abgespielt wurde.
 
-* Submenu-Sendto-Mediaplayer.desktop - Integriert die Punkte "Senden an MPlayer Playlist" und Sendan an MPlayer sofort" ins Kontextmenü jeder Mediendatei in Dolphin.
+* Submenu-Sendto-Mediaplayer.desktop - Integriert die Punkte "Senden an MPlayer Playlist" und Sendan an 
+MPlayer sofort" ins Kontextmenü jeder Mediendatei in Dolphin.
 
 * README.md - Diese Datei
 

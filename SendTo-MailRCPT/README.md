@@ -13,12 +13,14 @@ user@linux:~/Pfad/zu/den/entpackten/Dateien/SendTo-MailRCPT> bash ./install
 
 * install (Bash-Script) - Installiert Scripte und Menüs für den angemeldeten Nutzer
 
-* ksm_sendto_mailrcpt (Bash-Script) - Erstellt die Befehlszeile, damit Thunderbird eine neue Mail mit den als Parameter übergebenen Dateien als Anhang generiert und ruft diese dann auf
+* ksm_sendto_mailrcpt (Bash-Script) - Erstellt die Befehlszeile, damit Thunderbird eine neue Mail mit den als Parameter 
+übergebenen Dateien als Anhang generiert und ruft diese dann auf
 
 * sendto_bluetooth.nemo_action - Stellt den Kontextmenübefehl "Senden an... Bluetoothgerät" für Nemo zur Verfügung.
 
 * sendto_mailrcpt.nemo_action - Stellt den Kontextmenübefehl "Senden an... Mailempfänger mit Thunderbird" für Nemo zur Verfügung
 
-* Submenu-Sendto-Mailrcpt.desktop - Stellt die Kontextmenübefehle "Senden an... Bluetoothgerät" und Senden an... Mailempfänger mit Thunderbird" für Dolphin zur Verfügung.
+* Submenu-Sendto-Mailrcpt.desktop - Stellt die Kontextmenübefehle "Senden an... Bluetoothgerät" und Senden an... Mailempfänger 
+mit Thunderbird" für Dolphin zur Verfügung.
 
 * README.md - Diese Datei
