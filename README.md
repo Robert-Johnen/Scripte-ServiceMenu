@@ -13,7 +13,7 @@ In jedem Unterverzeichnis liegt eine Datei _install_. Durch den Aufruf von
 ``` 
 user@host:~/entpackte/Dateien> bash ./install
 ```
-im jeweiligen Unterverzeichnis werden die entsprechenden Menüeinträge generiert und die Scripte in das </br>
-Verzeichnis ~/bin kopiert. Sollte ein entsprechendes Unterverzeichnis noch nicht existieren, wird es angelegt.</br>
+im jeweiligen Unterverzeichnis werden die entsprechenden Menüeinträge generiert und die Scripte in das
+Verzeichnis ~/bin kopiert. Sollte ein entsprechendes Unterverzeichnis noch nicht existieren, wird es angelegt.
 
 * README.md - Diese Datei
