@@ -4,12 +4,15 @@
 # fuer den lokalen Benutzer
 #
 
+SHAREDIRKDE5=~/.local/share//kservices5
+SHAREDIRNEMO=~/.local/share/nemo
+
 ######################### KDE 5 / Plasma / Dolphin
 # Wenn entsprechendes Ziel-Verzeichnisse noch nicht existieren, dann lege es an
-[ -d ~/.local/share/kservices5/ServiceMenus ] || mkdir -p ~/.local/share/kservices5/ServiceMenus 
+[ -d "${SHAREDIRKDE5}"/ServiceMenus ] || mkdir -p "${SHAREDIRKDE5}"/ServiceMenus 
 
 # kopiere die Dateien in die entsprechenden Verzeichnisse
-cp -t ~/.local/share/kservices5/ServiceMenus/ *.desktop
+cp -t "${SHAREDIRKDE5}"/ServiceMenus/ *.desktop
 
 # in Dolphn als Service anmelden
 kbuildsycoca4
@@ -17,12 +20,13 @@ kbuildsycoca5
 
 ######################### Cinnamon / Nemo
 # Wenn entsprechende Ziel-Verzeichnisse noch nicht existieren, dann lege sie an
-[ -d ~/.local/share/nemo/actions ] || mkdir -p ~/.local/share/nemo/actions 
-[ -d ~/.local/share/nemo/scripts ] || mkdir -p ~/.local/share/nemo/scripts 
+[ -d "${SHAREDIRNEMO}"/actions ] || mkdir -p "${SHAREDIRNEMO}"/actions 
+[ -d "${SHAREDIRNEMO}"/scripts ] || mkdir -p "${SHAREDIRNEMO}"/scripts 
 
 # kopiere die Dateien in die entsprechenden Verzeichnisse
-cp -t ~/.local/share/nemo/actions/ *.nemo_action 
-cp -t ~/.local/share/nemo/scripts/ nsc_*
+cp -t "${SHAREDIRNEMO}"/actions/ *.nemo_action 
+cp -t "${SHAREDIRNEMO}"/scripts/ *.nemo_script
+chmod u+x "${SHAREDIRNEMO}"/scripts *.nemo_script
 # nemo neu starten
 nemo -q
 nemo
@@ -32,9 +36,8 @@ nemo
 [ -d ~/bin ] || mkdir ~/bin
 
 # kopiere die Dateien in dieses Verzeichnis
-cp -t ~/bin/ ksm_pdf_tool nemowrapper_pdftool
+cp -t ~/bin/ ksm_*
 
 
 # Datei ausfuehrbar machen
-chmod u+x ~/bin/ksm_pdf_tool ~/bin/nemowrapper_pdftool
-
+chmod u+x ~/bin/ksm_*

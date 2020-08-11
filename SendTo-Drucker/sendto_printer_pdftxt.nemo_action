@@ -2,7 +2,7 @@
 Name=Senden an... Standarddrucker
 Comment=drucken
 Dependencies=lpr;
-Exec=nemowrapper_printfile t %F
+Exec=<sendto_printer_wrapper.nemo_script t %F>
 Icon-Name=printer
 Selection=any
 #Separator=;
