@@ -7,7 +7,7 @@ Scripte und Menüeinträge für das Kontextmenü der Dateimanager Dolphin und Ne
 
 - SendTo-mplayerPlaylist - Sende Mediendatei zum Abspielen an eine Einmal-Playlist für MPlayer
 
-- myPDF-Tool - Analysieren und Modifizieren von PDF-Dateien (Nemo und Dolphin) </br> [https://github.com/Robert-Johnen/myPDF-Tool]
+- myPDF-Tool - [https://github.com/Robert-Johnen/myPDF-Tool] Analysiere und Modifikation von PDF-Dateien (Nemo und Dolphin)
 
 In jedem Unterverzeichnis liegt eine Datei _install_. Durch den Aufruf von
 ``` 
