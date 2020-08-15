@@ -11,28 +11,28 @@
 #--------------------------------------------------------------------------------------#
 #------------------------------------ Hauptprogramm -----------------------------------#
 #--------------------------------------------------------------------------------------#
-PARA="${1}"                                                 # Parameter fuer ksm_pdf_tool
-shift
-while [ -n "${1}" ]                                         # wenn nicht leer, dann wiederhole
+PARA="${1}"                                                 # 1. Parameter (o=Officedatei oder t=Textdatei)
+shift                                                       # lösche den 1. Parameter und rücke den 2. Parameter auf den ersten Platz
+while [ -n "${1}" ]                                         # wenn Parameter nicht leer, dann wiederhole
     do                                                      
-    case $PARA in
-      t) lp "${1}"
-      ((ANZAHL+=1))                                         # Anzahl der verarbeiteten PDF-Dateien
+    case $PARA in                                           # Beginn case Para ist
+      [tT]) lp "${1}"                                       # t oder T drucke Textdatei
+            ((ANZAHL+=1))                                   # Anzahl der verarbeiteten Textdateien
       ;;
-      o) libreoffice --headless -p "${1}"
-      ((ANZAHL+=1))                                         # Anzahl der verarbeiteten PDF-Dateien
+      [oO]) libreoffice --headless -p "${1}"                # Para ist o oder O drucke Officedatei
+            ((ANZAHL+=1))                                   # Anzahl der verarbeiteten Office-Dateien
       ;;
-      *) echo "Fehler bei Objekt ${1}"
+      *) echo "Parameter ${PARA} unbekannt"                 # Para unbekannt
+       echo Usage: `basename $0` [ot] file1 file2 file3 ... # sage wie es geht
       ;;
-      esac
-      ((ANZAHL+=1))                                         # Anzahl der verarbeiteten PDF-Dateien
-    shift                                                   # loescht $1 und rueckt $2 auf $1 vor
+      esac                                                  # Ende case
+    shift                                                   # loescht Parameter $1 und rueckt Parameter $2 auf $1 vor
     done                                                    # bis Parameterliste leer
 
-if [ $ANZAHL -gt 0 ]                                        # wenn anzahl der Anhaenge > 0
-  then                                                      # bastele die Befehlszeilefuer thnderbird
+if [ $ANZAHL -gt 0 ]                                        # wenn anzahl der Dateien > 0
+  then                                                      # sage wieviele Dateiobjekte das waren
   echo "${ANZAHL} Objekte verarbeitet"
-  else                                                      # wenn Anzahl = 0 dann sag wies geht...
+  else                                                      # wenn Anzahl = 0 dann sag wie es geht...
   echo Usage: `basename $0` [ot] file1 file2 file3 ...
   fi
   
