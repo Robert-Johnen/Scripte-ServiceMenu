@@ -9,6 +9,8 @@ Scripte und Menüeinträge für das Kontextmenü der Dateimanager Dolphin und Ne
 
 - [myPDF-Tool](https://github.com/Robert-Johnen/myPDF-Tool) -  Analyse und Modifikation von PDF-Dateien (Nemo und Dolphin)
 
+- Sonderzeichen-bereinigen - prüfen der Einträge eines Verzeichnisbaumes auf Sonderzeichen und bereinigt diese
+
 In jedem Unterverzeichnis liegt eine Datei _install_. Durch den Aufruf von
 ``` 
 user@host:~/entpackte/Dateien> bash ./install

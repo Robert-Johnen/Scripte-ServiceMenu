@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Service
+Encoding=UTF-8
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+MimeType=inode/directory
+Actions=detox;
+# X-KDE-Priority=TopLevel
+# X-KDE-Submenu=Foo...
+# X-KDE-Submenu[de]=Foo...
+
+[Desktop Action detox]
+Name=Alle Verzeichniseintraege im Verzeichnisbaum von Sonderzeichen bereinigen...
+Icon=accessories-character-map
+Exec=find %n -type f -execdir ksm_detox {} \;; find %n -depth -type d -execdir ksm_detox {} \;

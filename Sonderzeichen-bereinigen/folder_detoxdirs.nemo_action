@@ -1,0 +1,10 @@
+[Nemo Action]
+Name=Austausch von Sonderzeichen bei allen Verzeichnissen im Verzeichnisbaum
+Comment=Sondezeichen bereinigen
+Exec=
+Icon-accessories-character-map
+Selection=sfind %P -type d -execdir ksm_detox {} \;
+#Separator=;
+Quote=double
+Mimetypes=inode/directory;
+#Extensions=dir;
