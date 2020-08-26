@@ -5,7 +5,7 @@ Das Kontextmenü erscheint in Dolphin, wenn eines oder mehrere Verzeichisse ausg
 wenn genau ein Verzeichnis ausgewählt ist. Grund für dieses Script war die Anschaffung einer Digitaldruck-Anlage
 von Konica-Minolta. Diese läuft unter Linux, hat allerdings Probleme mit Datei- und Verzeichnisnamen, die 
 unter Windows mit Sonderzeichen erstellt wurden (falsche Codierung der Sonderzeichen beim Übertragen der Dateien).
-Die Drucksoftware weigerte sich, Dateien mit Sonderzeichen im Dateinamen zu drucken.
+Die Drucksoftware weigert sich, Dateien mit Sonderzeichen im Dateinamen zu drucken.
 Um dieses Problem zu umgehen habe ich dieses Miniscript geschrieben.
 
 * Folder_detox.desktop - Kontextmenüeintrag für Dateimanager Dolphin
