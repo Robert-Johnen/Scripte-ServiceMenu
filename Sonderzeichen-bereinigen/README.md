@@ -1,4 +1,3 @@
-#Sonderzeichen-bereinigen
 # Sonderzeichen-bereinigen
 
 Ersetzen von Sonderzeichen in einem kompletten Verzeichnisbaun für alle Dateien und Verzeichnisse
