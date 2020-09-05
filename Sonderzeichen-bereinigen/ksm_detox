@@ -6,6 +6,7 @@ NEWFILE=$(echo "${1}" | sed -f ~/.detoxrc )
 
 if [ ! "${1}" == "${NEWFILE}" ]
   then
+  echo "${1}    moved to    ${NEWFILE}"
   mv "${1}" "${NEWFILE}"
   fi
   
