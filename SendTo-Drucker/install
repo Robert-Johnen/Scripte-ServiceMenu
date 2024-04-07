@@ -14,8 +14,9 @@ cp -t ~/.local/share/kservices5/ServiceMenus/ *.desktop
 cp -t ~/.local/share/kio/servicemenus/ *.desktop
 
 # in Dolphn als Service anmelden
-kbuildsycoca4
+# kbuildsycoca4
 kbuildsycoca5
+kbuildsycoca6
 
 ######################### Cinnamon / Nemo
 # Wenn entsprechende Ziel-Verzeichnisse noch nicht existieren, dann lege sie an
